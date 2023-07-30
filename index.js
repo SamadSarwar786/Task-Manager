@@ -7,6 +7,20 @@ const taskRouter = require("./src/routers/task");
 
 const app = express();
 
+
+app.use(express.json()); // it allow and convert the request into json -> res.body is now json
+app.use(userRouter);
+app.use(taskRouter);
+
+console.log('port ',process.env.PORT);
+const port = process.env.PORT || 3000;
+
+
+app.listen(port, () => {
+  console.log("Server is up on port " + port);
+});
+
+
 //middle ware
 //Without middleware:  new request -> run route handler
 //With middleware:  new request -> do Something or you have full control to run route handler or not -> run route handler
@@ -25,52 +39,3 @@ const app = express();
 //   // else
 //   next();
 // });
-
-app.use(express.json()); // it allow and convert the request into json -> res.body is now json
-app.use(userRouter);
-app.use(taskRouter);
-
-console.log('port ',process.env.PORT);
-const port = process.env.PORT || 3000;
-
-// app.get("", (req, res) => {
-//   res.send({ data: "root file loaded" });
-// });
-
-app.listen(port, () => {
-  console.log("Server is up on port " + port);
-});
-
-// const bcrypt = require("bcryptjs");
-
-// const hashing = async () => {
-//   const password = "ram12345";
-//   const hashedPassword = await bcrypt.hash(password, 8);
-
-//   console.log(password);
-//   console.log(hashedPassword);
-// };
-
-// hashing();
-
-// const jwt = require("jsonwebtoken");
-
-// const myFunction = () => {
-//   const token = jwt.sign({ name: "Ram Manohar" }, "NodeJsCourse", {
-//     expiresIn: "10 days",
-//   });
-//   console.log(token);
-//   try {
-//     const data = jwt.verify(token, "NodeJsCourse");
-//     console.log(data);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// myFunction();
-// const Task = require('./model/task');
-
-// const main = () => {
-
-// }
