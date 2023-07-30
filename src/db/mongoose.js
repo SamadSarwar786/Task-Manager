@@ -1,18 +1,22 @@
 const { mongoose } = require("mongoose");
-require('dotenv').config();
+require("dotenv").config();
 console.log(process.env.MONGODB_URL);
 
-try {
-    // Connect to the MongoDB cluster
-     mongoose.connect(
-        process.env.MONGODB_URL,
-      { useNewUrlParser: true, useUnifiedTopology: true },
-      () => console.log(" Mongoose is connected")
-    );
-
-  } catch (e) {
-    console.log("could not connect");
-  }
+  // Connect to the MongoDB cluster
+  mongoose.connect(
+    process.env.MONGODB_URL,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+    })
+    .then(() => {
+      console.log('Connected to MongoDB');
+    })
+    .catch((error) => {
+      console.error('Error connecting to MongoDB:', error);
+    });
 
 // const me = new User({
 //   name: "   Samad    Sarwar    ",
