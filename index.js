@@ -2,8 +2,8 @@ const express = require("express");
 
 require("./src/db/mongoose"); // just get all thsose file data here
 require('dotenv').config();
-const userRouter = require("./src/routers/user");
-const taskRouter = require("./src/routers/task");
+// const userRouter = require("./src/routers/user");
+// const taskRouter = require("./src/routers/task");
 
 const app = express();
 
@@ -27,8 +27,8 @@ const app = express();
 // });
 
 app.use(express.json()); // it allow and convert the request into json -> res.body is now json
-app.use(userRouter);
-app.use(taskRouter);
+// app.use("/", userRouter);
+// app.use("/", taskRouter);
 
 console.log('port ',process.env.PORT);
 const port = process.env.PORT || 3000;
@@ -74,3 +74,4 @@ app.listen(port, () => {
 // const main = () => {
 
 // }
+module.exports = app;
