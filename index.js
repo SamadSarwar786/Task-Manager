@@ -33,9 +33,9 @@ app.use(taskRouter);
 console.log('port ',process.env.PORT);
 const port = process.env.PORT || 3000;
 
-// app.get("", (req, res) => {
-//   res.send({ data: "root file loaded" });
-// });
+app.get("", (req, res) => {
+  res.send({ data: "root file loaded" });
+});
 
 app.listen(port, () => {
   console.log("Server is up on port " + port);
