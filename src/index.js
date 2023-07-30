@@ -1,9 +1,9 @@
 const express = require("express");
 
-require("./src/db/mongoose"); // just get all thsose file data here
+require("./db/mongoose"); // just get all thsose file data here
 
-const userRouter = require("./src/routers/user");
-const taskRouter = require("./src/routers/task");
+const userRouter = require("./routers/user");
+const taskRouter = require("./routers/task");
 
 const app = express();
 
