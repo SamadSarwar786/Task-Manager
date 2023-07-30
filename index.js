@@ -33,7 +33,7 @@ app.use(taskRouter);
 console.log('port ',process.env.PORT);
 const port = process.env.PORT || 3000;
 
-app.get("", (req, res) => {
+app.get("/movie", (req, res) => {
   res.send({ data: "root file loaded" });
 });
 
