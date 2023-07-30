@@ -2,7 +2,6 @@ const express = require("express");
 const User = require("../model/user");
 const auth = require("../middleware/auth");
 const multer = require("multer");
-const sharp = require("sharp");
 
 const router = new express.Router();
 
@@ -156,12 +155,8 @@ router.post(
     // if (!req.file) {
     //   res.status(400).send({ error: "Please upload avatar" });
     // }
-    const buffer = await sharp(req.file.buffer)
-      .resize({ height: 250, width: 250 })
-      .png()
-      .toBuffer();
 
-    req.user.avatar = buffer;
+    req.user.avatar = req.file.buffer;
     await req.user.save();
     res.send(req.user);
   },
