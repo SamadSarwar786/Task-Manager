@@ -1,9 +1,9 @@
 const express = require("express");
 
-require("./db/mongoose"); // just get all thsose file data here
-
-const userRouter = require("./routers/user");
-const taskRouter = require("./routers/task");
+require("./src/db/mongoose"); // just get all thsose file data here
+require('dotenv').config();
+const userRouter = require("./src/routers/user");
+const taskRouter = require("./src/routers/task");
 
 const app = express();
 
@@ -30,11 +30,12 @@ app.use(express.json()); // it allow and convert the request into json -> res.bo
 app.use(userRouter);
 app.use(taskRouter);
 
+console.log('port ',process.env.PORT);
 const port = process.env.PORT || 3000;
 
-app.get("", (req, res) => {
-  res.send({ data: "root file loaded" });
-});
+// app.get("", (req, res) => {
+//   res.send({ data: "root file loaded" });
+// });
 
 app.listen(port, () => {
   console.log("Server is up on port " + port);
